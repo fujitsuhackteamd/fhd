@@ -55,6 +55,18 @@ class UsersController extends AppController
      */
     public function index()
     {
+        $user = $this->Auth->user('id');
+        $sex = $this->Auth->user('sex');
+        $this->set(compact('user','sex'));
+    }
+
+    /**
+     * Indexadmin method
+     *
+     * @return \Cake\Http\Response|null
+     */
+    public function indexadmin()
+    {
         $users = $this->paginate($this->Users);
         $this->set(compact('users'));
     }
@@ -114,6 +126,31 @@ class UsersController extends AppController
                 $this->Flash->success(__('The user has been saved.'));
 
                 return $this->redirect(['action' => 'view',$user->id]);
+            }
+            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+        }
+        $doctors = $this->Users->Doctors->find('list', ['limit' => 200]);
+        $this->set(compact('user', 'doctors'));
+    }
+
+        /**
+     * Editadmin method
+     *
+     * @param string|null $id User id.
+     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function editadmin($id = null)
+    {
+        $user = $this->Users->get($id, [
+            'contain' => [],
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('The user has been saved.'));
+
+                return $this->redirect(['action' => 'indexadmin']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }

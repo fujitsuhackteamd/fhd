@@ -11,6 +11,17 @@
         <li><?= $this->Html->link(__('オンライン診断'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('登録情報編集'), ['action' => 'edit', $user->id]) ?> </li>
         <li><?= $this->Html->link(__('ログアウト'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
+
+        <?php if($user->sex == 2): ?>
+            <li class="heading"><?= __('MASTER') ?></li>
+            <li><?= $this->Html->link(__('登録者一覧'), ['action' => 'indexadmin']) ?> </li>
+            <li><?= $this->Html->link(__('登録者追加'), ['action' => 'add']) ?></li>
+            <li><?= $this->Html->link(__('医者一覧'), ['controller' => 'Doctors', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('医者追加'), ['controller' => 'Doctors', 'action' => 'add']) ?></li>
+            <li><?= $this->Html->link(__('患者一覧'), ['controller' => 'Patients', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('患者追加'), ['controller' => 'Patients', 'action' => 'add']) ?></li>
+        <?php endif; ?>
+
     </ul>
 </nav>
 <div class="users view large-9 medium-8 columns content">
@@ -30,6 +41,8 @@
                 <td>男性</td>
             <?php elseif($user->sex == 1) : ?>
                 <td>女性</td>
+            <?php elseif($user->sex == 2) : ?>
+                <td>管理者権限</td>
             <?php endif; ?>
         </tr>
     </table>

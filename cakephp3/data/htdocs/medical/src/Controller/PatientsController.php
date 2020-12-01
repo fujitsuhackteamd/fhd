@@ -2,7 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 /**
  * Patients Controller
  *
@@ -12,6 +13,14 @@ use App\Controller\AppController;
  */
 class PatientsController extends AppController
 {
+    public function beforeFilter(Event $event){
+        parent::beforeFilter($event);
+        //$this->Auth->allow(['login']);
+    }
+    public function isAuthorized($user)
+    {
+        return true;
+    }
     /**
      * Index method
      *

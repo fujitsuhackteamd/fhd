@@ -33,6 +33,7 @@
             echo $this->Form->control('password');
             echo $this->Form->control('age');
             echo $this->Form->control('sex');
+            echo $this->Form->control('doctor_id');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
