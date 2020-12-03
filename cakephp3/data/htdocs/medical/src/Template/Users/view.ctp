@@ -8,35 +8,42 @@
     <ul class="side-nav">
         <li class="heading"><?= __('MENU') ?></li>
         <!-- <li><? //echo $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li> -->
-        <li><?= $this->Html->link(__('オンライン診断'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('登録情報編集'), ['action' => 'edit', $user->id]) ?> </li>
+        <li><?= $this->Html->link(__('オンライン診断'), ['controller' => 'Users','action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('登録情報編集'), ['controller' => 'Users','action' => 'edit', $user]) ?> </li>
         <li><?= $this->Html->link(__('ログアウト'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
 
-        <?php if($user->sex == 2): ?>
+        <?php if($sex == 2): ?>
             <li class="heading"><?= __('MASTER') ?></li>
-            <li><?= $this->Html->link(__('登録者一覧'), ['action' => 'indexadmin']) ?> </li>
-            <li><?= $this->Html->link(__('登録者追加'), ['action' => 'add']) ?></li>
+            <li><?= $this->Html->link(__('登録者一覧'), ['controller' => 'Users','action' => 'indexadmin']) ?> </li>
+            <li><?= $this->Html->link(__('登録者追加'), ['controller' => 'Users','action' => 'add']) ?></li>
             <li><?= $this->Html->link(__('医者一覧'), ['controller' => 'Doctors', 'action' => 'index']) ?></li>
             <li><?= $this->Html->link(__('医者追加'), ['controller' => 'Doctors', 'action' => 'add']) ?></li>
             <li><?= $this->Html->link(__('患者一覧'), ['controller' => 'Patients', 'action' => 'index']) ?></li>
             <li><?= $this->Html->link(__('患者追加'), ['controller' => 'Patients', 'action' => 'add']) ?></li>
+            <li><?= $this->Html->link(__('診察データ一覧'), ['controller' => 'Results', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('診察データ追加'), ['controller' => 'Results', 'action' => 'add']) ?></li>
         <?php endif; ?>
 
     </ul>
 </nav>
 <div class="users view large-9 medium-8 columns content">
     <h3><?= h($user->name) ?></h3>
+    <?php if($user->doctor_id != "" ):?>
+        <h4><?= __('お医者用ページ') ?></h4>
+        <?= $this->Html->link(__('お医者用ページ'), ['controller' => 'Doctors', 'action' => 'view',$user->doctor_id]) ?>
+    <?php endif; ?>
+    <h4><?= __('登録個人情報') ?></h4>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Username') ?></th>
             <td><?= h($user->username) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Age') ?></th>
+            <th scope="row"><?= __('年齢') ?></th>
             <td><?= $this->Number->format($user->age) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Sex') ?></th>
+            <th scope="row"><?= __('性別') ?></th>
             <?php if($user->sex == 0): ?>
                 <td>男性</td>
             <?php elseif($user->sex == 1) : ?>
@@ -46,32 +53,24 @@
             <?php endif; ?>
         </tr>
     </table>
+    <h4><?= __('受診情報') ?></h4>
     <div class="related">
-        <h4><?= __('Related Patients') ?></h4>
         <?php if (!empty($user->patients)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('User Id') ?></th>
-                <th scope="col"><?= __('Department') ?></th>
-                <th scope="col"><?= __('Desired') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col"><?= __('受診科') ?></th>
+                <th scope="col"><?= __('受診形態') ?></th>
+                <th scope="col"><?= __('受診日') ?></th>
             </tr>
             <?php foreach ($user->patients as $patients): ?>
             <tr>
-                <td><?= h($patients->id) ?></td>
-                <td><?= h($patients->user_id) ?></td>
                 <td><?= h($patients->department) ?></td>
-                <td><?= h($patients->desired) ?></td>
+                <?php if($patients->desired == 0): ?>
+                    <td><?= h("対面") ?></td>
+                <?php elseif($patients->desired == 1): ?>
+                    <td><?= h("オンライン") ?></td>
+                <?php endif;?>
                 <td><?= h($patients->created) ?></td>
-                <td><?= h($patients->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Patients', 'action' => 'view', $patients->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Patients', 'action' => 'edit', $patients->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Patients', 'action' => 'delete', $patients->id], ['confirm' => __('Are you sure you want to delete # {0}?', $patients->id)]) ?>
-                </td>
             </tr>
             <?php endforeach; ?>
         </table>

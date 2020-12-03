@@ -42,10 +42,11 @@ class DoctorsController extends AppController
      */
     public function view($id = null)
     {
+        $sex = $this->Auth->user('sex');
+        $this->set(compact('sex'));
         $doctor = $this->Doctors->get($id, [
             'contain' => ['Results', 'Users'],
         ]);
-
         $this->set('doctor', $doctor);
     }
 
@@ -81,12 +82,18 @@ class DoctorsController extends AppController
         $doctor = $this->Doctors->get($id, [
             'contain' => [],
         ]);
+        $user = $this->Auth->user('id');
+        $sex = $this->Auth->user('sex');
+        $this->set(compact('id','sex'));
         if ($this->request->is(['patch', 'post', 'put'])) {
             $doctor = $this->Doctors->patchEntity($doctor, $this->request->getData());
             if ($this->Doctors->save($doctor)) {
                 $this->Flash->success(__('The doctor has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+                if ($sex == 2){
+                    return $this->redirect(['action' => 'index']);
+                }else{
+                    return $this->redirect(['action' => 'view',$id]);
+                }
             }
             $this->Flash->error(__('The doctor could not be saved. Please, try again.'));
         }

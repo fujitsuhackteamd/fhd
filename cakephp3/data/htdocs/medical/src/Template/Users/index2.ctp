@@ -1,3 +1,4 @@
+
 <?php
 /**
  * @var \App\View\AppView $this
@@ -30,7 +31,38 @@
 </nav>
 <div class="users index large-9 medium-8 columns content">
     <h3><?= __('オンライン診断') ?></h3>
-    <li><?= $this->Html->link(__('csv結果'), ['action' => 'index2']) ?> </li>
+    <?//= $this->Html->link(__('来院予約'), ['controller' => 'Users', 'action' => 'logout']) ?>
+    <p>病院データ同期</p>
+    <?php
+    $count = count($data) - 1;
+    echo "結果:".$count."個発見されました。";
+    ?>
+    <table cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th scope="col"><?= "先生名"; ?></th>
+                <th scope="col"><?= "病院名"; ?></th>
+                <th scope="col"><?= $data[0][3]; ?></th>
+                <th scope="col"><?= $data[0][4]; ?></th>
+                <th scope="col"><?= $data[0][5]; ?></th>
+                <th scope="col"><?= $data[0][6]; ?></th>
+                <th scope="col"><?= $data[0][7]; ?></th>
+                <th scope="col"><?= $data[0][8]; ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php for($i=1;$i<=$count;$i++): ?>
+            <tr>
+                <td><?= $data[$i][1]; ?></td>
+                <td><?= $data[$i][2]; ?></td>
+                <td><?= $data[$i][3]; ?></td>
+                <td><?= $data[$i][4]; ?></td>
+                <td><?= $data[$i][5]; ?></td>
+                <td><?= $data[$i][6]; ?></td>
+                <td><?= $data[$i][7]; ?></td>
+                <td><?= $data[$i][8]; ?></td>
+            </tr>
+            <?php endfor; ?>
+        </tbody>
+    </table>
 </div>
-
-

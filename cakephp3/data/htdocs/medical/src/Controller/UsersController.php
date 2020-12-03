@@ -13,6 +13,8 @@ use Cake\ORM\TableRegistry;
  */
 class UsersController extends AppController
 {
+    public $components = ["Test"=>[]];
+
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
@@ -55,9 +57,19 @@ class UsersController extends AppController
      */
     public function index()
     {
+        //$this->Test = $this->loadComponent('Test');
+        //$data = $this->Test->test();
         $user = $this->Auth->user('id');
         $sex = $this->Auth->user('sex');
         $this->set(compact('user','sex'));
+    }
+
+    public function index2()
+    {
+        $data = $this->Test->test();
+        $user = $this->Auth->user('id');
+        $sex = $this->Auth->user('sex');
+        $this->set(compact('user','sex','data'));
     }
 
     /**
@@ -67,6 +79,9 @@ class UsersController extends AppController
      */
     public function indexadmin()
     {
+        $user = $this->Auth->user('id');
+        $sex = $this->Auth->user('sex');
+        $this->set(compact('user','sex'));
         $users = $this->paginate($this->Users);
         $this->set(compact('users'));
     }
@@ -83,8 +98,9 @@ class UsersController extends AppController
         $user = $this->Users->get($id, [
             'contain' => [ 'Patients'],
         ]);
-
         $this->set('user', $user);
+        $sex = $this->Auth->user('sex');
+        $this->set(compact('sex'));
     }
 
     /**
@@ -120,6 +136,7 @@ class UsersController extends AppController
         $user = $this->Users->get($id, [
             'contain' => [],
         ]);
+        $sex = $this->Auth->user('sex');
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
@@ -130,7 +147,7 @@ class UsersController extends AppController
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $doctors = $this->Users->Doctors->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'doctors'));
+        $this->set(compact('sex','user', 'doctors'));
     }
 
         /**
@@ -145,6 +162,7 @@ class UsersController extends AppController
         $user = $this->Users->get($id, [
             'contain' => [],
         ]);
+        $sex = $this->Auth->user('sex');
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
@@ -155,7 +173,7 @@ class UsersController extends AppController
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $doctors = $this->Users->Doctors->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'doctors'));
+        $this->set(compact('user','sex', 'doctors'));
     }
 
     /**
