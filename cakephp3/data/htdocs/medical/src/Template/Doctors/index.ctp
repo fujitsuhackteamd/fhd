@@ -34,9 +34,12 @@
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('hospital_name') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('expart') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('postal') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('street_address') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('phone_number') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('address_x') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('address_y') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('expart') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('congestion') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('possible') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('url') ?></th>
@@ -51,9 +54,12 @@
                 <td><?= $this->Number->format($doctor->id) ?></td>
                 <td><?= h($doctor->name) ?></td>
                 <td><?= h($doctor->hospital_name) ?></td>
+                <td><?= h($doctor->expart) ?></td>
+                <td><?= h($doctor->postal) ?></td>
+                <td><?= h($doctor->street_address) ?></td>
+                <td><?= h($doctor->phone_number) ?></td>
                 <td><?= $this->Number->format($doctor->address_x) ?></td>
                 <td><?= $this->Number->format($doctor->address_y) ?></td>
-                <td><?= h($doctor->expart) ?></td>
                 <td><?= $this->Number->format($doctor->congestion) ?></td>
                 <td><?= $this->Number->format($doctor->possible) ?></td>
                 <td><?= h($doctor->url) ?></td>

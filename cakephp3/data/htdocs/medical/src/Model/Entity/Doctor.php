@@ -35,9 +35,12 @@ class Doctor extends Entity
     protected $_accessible = [
         'name' => true,
         'hospital_name' => true,
+        'expart' => true,
+        'postal' => true,
+        'street_address' => true,
+        'phone_number' => true,
         'address_x' => true,
         'address_y' => true,
-        'expart' => true,
         'congestion' => true,
         'possible' => true,
         'url' => true,

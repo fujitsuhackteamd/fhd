@@ -33,10 +33,13 @@
         <?php
             echo $this->Form->control('name');
             echo $this->Form->control('hospital_name');
+            echo $this->Form->control('expart');
+            echo $this->Form->control('postal');
+            echo $this->Form->control('street_address');
+            echo $this->Form->control('phone_number');
             echo $this->Form->control('address_x');
             echo $this->Form->control('address_y');
-            echo $this->Form->control('expart');
-            echo $this->Form->control('congestion');
+            echo $this->Form->control('congestion') ;
             echo $this->Form->control('possible');
             echo $this->Form->control('url');
         ?>

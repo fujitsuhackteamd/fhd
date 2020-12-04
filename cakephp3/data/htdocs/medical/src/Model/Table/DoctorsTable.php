@@ -74,6 +74,27 @@ class DoctorsTable extends Table
             ->notEmptyString('hospital_name');
 
         $validator
+            ->scalar('expart')
+            ->maxLength('expart', 255)
+            ->requirePresence('expart', 'create')
+            ->notEmptyString('expart');
+
+        $validator
+            ->scalar('postal')
+            ->requirePresence('postal', 'create')
+            ->notEmptyString('postal');
+
+        $validator
+            ->scalar('street_address')
+            ->requirePresence('street_address', 'create')
+            ->notEmptyString('street_address');
+
+        $validator
+            ->scalar('phone_number')
+            ->requirePresence('phone_number', 'create')
+            ->notEmptyString('phone_number');
+
+        $validator
             ->integer('address_x')
             ->requirePresence('address_x', 'create')
             ->notEmptyString('address_x');
@@ -82,12 +103,6 @@ class DoctorsTable extends Table
             ->integer('address_y')
             ->requirePresence('address_y', 'create')
             ->notEmptyString('address_y');
-
-        $validator
-            ->scalar('expart')
-            ->maxLength('expart', 255)
-            ->requirePresence('expart', 'create')
-            ->notEmptyString('expart');
 
         $validator
             ->integer('congestion')

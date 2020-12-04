@@ -43,6 +43,18 @@
             <td><?= h($doctor->expart) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('郵便番号') ?></th>
+            <td><?= h($doctor->postal) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('住所') ?></th>
+            <td><?= h($doctor->street_address) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('電話番号') ?></th>
+            <td><?= h($doctor->phone_number) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Url') ?></th>
             <td><?= h($doctor->url) ?></td>
         </tr>
