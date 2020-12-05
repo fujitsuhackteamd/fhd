@@ -73,7 +73,12 @@ class ResultsTable extends Table
             ->requirePresence('doctor_text', 'create')
             ->notEmptyString('doctor_text');
 
-        return $validator;
+        $validator
+            ->integer('desired')
+            ->requirePresence('desired', 'create')
+            ->notEmptyString('desired');
+
+            return $validator;
     }
 
     /**

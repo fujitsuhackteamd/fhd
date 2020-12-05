@@ -29,8 +29,8 @@
 <div class="users view large-9 medium-8 columns content">
     <h3><?= h($user->name) ?></h3>
     <?php if($user->doctor_id != "" ):?>
-        <h4><?= __('お医者用ページ') ?></h4>
-        <?= $this->Html->link(__('お医者用ページ'), ['controller' => 'Doctors', 'action' => 'view',$user->doctor_id]) ?>
+        <h4><?= __('Doctor専用ページ') ?></h4>
+        <?= $this->Html->link(__('Doctor専用ページ'), ['controller' => 'Doctors', 'action' => 'view',$user->doctor_id]) ?>
     <?php endif; ?>
     <h4><?= __('登録個人情報') ?></h4>
     <table class="vertical-table">

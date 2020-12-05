@@ -34,7 +34,9 @@ class ResultsController extends AppController
             'contain' => ['Patients', 'Doctors'],
         ];
         $results = $this->paginate($this->Results);
-
+// echo "<pre>";
+// print_r($results);
+// echo "</pre>";
         $this->set(compact('results'));
     }
 

@@ -33,6 +33,7 @@ class Result extends Entity
         'patient_text' => true,
         'doctor_id' => true,
         'doctor_text' => true,
+        'desired' => true,
         'created' => true,
         'modified' => true,
         'patient' => true,

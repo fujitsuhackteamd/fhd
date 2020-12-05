@@ -35,6 +35,7 @@
             echo $this->Form->control('patient_text');
             echo $this->Form->control('doctor_id', ['options' => $doctors]);
             echo $this->Form->control('doctor_text');
+            echo $this->Form->control('desired');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

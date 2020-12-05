@@ -10,7 +10,7 @@
         <!-- <li><? //echo $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li> -->
         <li><?= $this->Html->link(__('オンライン診断'), ['controller' => 'Users','action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('マイページ'), ['controller' => 'Users','action' => 'view', $id]) ?> </li>
-        <li><?= $this->Html->link(__('医者登録情報編集'), ['controller' => 'Doctors', 'action' => 'edit',$doctor->id]) ?></li>
+        <li><?= $this->Html->link(__('医者登録情報編集'), ['controller' => 'Doctors', 'action' => 'view',$doctor->id]) ?></li>
         <li><?= $this->Html->link(__('登録情報編集'), ['controller' => 'Users','action' => 'edit', $id]) ?> </li>
         <li><?= $this->Html->link(__('ログアウト'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
 
