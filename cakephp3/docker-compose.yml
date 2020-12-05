@@ -53,6 +53,11 @@ services:
       - mysql
     links:
       - mysql
+  python:
+    build: ./data/python
+    volumes:
+      - "./data/python:/root"
+    tty: true
   host:
     build: ./data/htdocs
     environment:
