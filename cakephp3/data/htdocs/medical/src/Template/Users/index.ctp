@@ -62,12 +62,11 @@
                         <input type="hidden" name="address_x" id="address_x" >
                         <input type="hidden" name="address_y" id="address_y" >
                     </div>
-                    <button class="btn btn_clr btn-lg btn-block text-white" type="submit">病院を探す</button>
+                    <button class="btn btn_clr btn-lg btn-block text-white" style="text-align:right;" type="submit">病院を探す</button>
                 </form>
             </div>
         </div>
     </section>
-    <li><?= $this->Html->link(__('csv結果'), ['action' => 'index2']) ?> </li>
 </div>
 
 

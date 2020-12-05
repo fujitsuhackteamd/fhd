@@ -8,7 +8,7 @@
     <ul class="side-nav">
     <li class="heading"><?= __('MENU') ?></li>
         <!-- <li><? //echo $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li> -->
-        <li><?= $this->Html->link(__('オンライン診断'), ['controller' => 'Users','action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('問診表'), ['controller' => 'Users','action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('登録情報編集'), ['controller' => 'Users','action' => 'edit', $user]) ?> </li>
         <li><?= $this->Html->link(__('ログアウト'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
 

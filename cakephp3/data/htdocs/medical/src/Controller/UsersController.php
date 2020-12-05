@@ -98,6 +98,13 @@ class UsersController extends AppController
         $user = $this->Users->get($id, [
             'contain' => [ 'Patients'],
         ]);
+        // echo "<pre>";
+        // print_r($user['patients']);
+        // echo "</pre>";
+        // foreach ($user["patients"] as $key => $value) {
+        //     echo $value;
+        //     $value["doctor"] = $this->Users->Doctors->find($value["doctor_id"]);
+        // }
         $this->set('user', $user);
         $sex = $this->Auth->user('sex');
         $this->set(compact('sex'));
