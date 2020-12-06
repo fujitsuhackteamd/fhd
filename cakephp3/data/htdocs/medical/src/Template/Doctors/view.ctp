@@ -71,7 +71,7 @@
             <?php endif; ?>
         </tr>
     </table>
-    <div class="related">
+    <!-- <div class="related">
         <h4><?= __('個人登録情報') ?></h4>
         <?php if (!empty($doctor->users)): ?>
         <table cellpadding="0" cellspacing="0">
@@ -97,17 +97,15 @@
             <?php endforeach; ?>
         </table>
         <?php endif; ?>
-    </div>
+    </div> -->
     <div class="related">
         <h4><?= __('過去の診察結果') ?></h4>
         <?php if (!empty($doctor->results)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Patient Id') ?></th>
-                <th scope="col"><?= __('Patient Text') ?></th>
-                <th scope="col"><?= __('Doctor Text') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
+                <th scope="col"><?= __('患者名') ?></th>
+                <th scope="col"><?= __('現状') ?></th>
+                <th scope="col"><?= __('診断結果') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($doctor->results as $results): ?>
@@ -115,8 +113,6 @@
                 <td><?= h($results->patient_id) ?></td>
                 <td><?= h($results->patient_text) ?></td>
                 <td><?= h($results->doctor_text) ?></td>
-                <td><?= h($results->created) ?></td>
-                <td><?= h($results->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Results', 'action' => 'view', $results->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Results', 'action' => 'edit', $results->id]) ?>

@@ -66,6 +66,14 @@ class UsersController extends AppController
 
     public function index2()
     {
+        $data = $this->Test->python2();
+        $user = $this->Auth->user('id');
+        $sex = $this->Auth->user('sex');
+        $this->set(compact('user','sex','data'));
+    }
+
+    public function index3()
+    {
         $data = $this->Test->python();
         $user = $this->Auth->user('id');
         $sex = $this->Auth->user('sex');

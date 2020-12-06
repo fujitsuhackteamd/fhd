@@ -8,7 +8,7 @@
 $db = parse_url(env('CLEARDB_DATABASE_URL'));
 return [
     /*
-     * Debug Level:
+     * Debug Level: 
      *
      * Production Mode:
      * false: No error messages, errors, or warnings shown.
@@ -27,9 +27,46 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        // 'salt' => env('SECURITY_SALT', '__SALT__'),
+        //'salt' => env('SECURITY_SALT', '__SALT__'),
         'salt' => env('SALT'),
     ],
+    'Cache' => [
+        'default' => [
+            'className' => 'Memcached',
+            'prefix' => 'myapp_cake_',
+            'servers' => [env('MEMCACHIER_SERVERS')],
+            'username' => env('MEMCACHIER_USERNAME'),
+            'password' => env('MEMCACHIER_PASSWORD'),
+            'duration' => '+1440 minutes',
+        ],
+
+        'session' => [
+            'className' => 'Memcached',
+            'prefix' => 'myapp_cake_session_',
+            'servers' => [env('MEMCACHIER_SERVERS')],
+            'username' => env('MEMCACHIER_USERNAME'),
+            'password' => env('MEMCACHIER_PASSWORD'),
+            'duration' => '+1440 minutes',
+        ],
+
+        '_cake_core_' => [
+            'className' => 'Memcached',
+            'prefix' => 'myapp_cake_core_',
+            'servers' => [env('MEMCACHIER_SERVERS')],
+            'username' => env('MEMCACHIER_USERNAME'),
+            'password' => env('MEMCACHIER_PASSWORD'),
+            'duration' => '+1 years',
+        ],
+
+        '_cake_model_' => [
+            'className' => 'Memcached',
+            'prefix' => 'myapp_cake_model_',
+            'servers' => [env('MEMCACHIER_SERVERS')],
+            'username' => env('MEMCACHIER_USERNAME'),
+            'password' => env('MEMCACHIER_PASSWORD'),
+            'duration' => '+1 years',
+        ],
+    ]
 
     /*
      * Connection information used by the ORM to connect

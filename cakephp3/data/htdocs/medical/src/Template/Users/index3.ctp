@@ -45,8 +45,7 @@
                 <th scope="col"><?= "郵便番号"; ?></th>
                 <th scope="col"><?= "住所"; ?></th>
                 <th scope="col"><?= "電話番号"; ?></th>
-                <th scope="col"><?= "x座標"; ?></th>
-                <th scope="col"><?= "y座標"; ?></th>
+                <th scope="col"><?= "URL"; ?></th>
             </tr>
         </thead>
         <tbody>
@@ -58,8 +57,7 @@
                 <td><?= $data[$i][4]; ?></td>
                 <td><?= $data[$i][5]; ?></td>
                 <td><?= $data[$i][6]; ?></td>
-                <td><?= $data[$i][7]; ?></td>
-                <td><?= $data[$i][8]; ?></td>
+                <td><?= $data[$i][11]; ?></td>
             </tr>
             <?php endfor; ?>
         </tbody>

@@ -11,7 +11,7 @@
     <ul class="side-nav">
         <li class="heading"><?= __('MENU') ?></li>
         <!-- <li><? //echo $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li> -->
-        <li><?= $this->Html->link(__('オンライン診断'), ['controller' => 'Users','action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('問診表'), ['controller' => 'Users','action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('登録情報編集'), ['controller' => 'Users','action' => 'edit', $user->id]) ?> </li>
         <li><?= $this->Html->link(__('ログアウト'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
 
@@ -61,20 +61,24 @@
         <?php if (!empty($user->patients)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
+                <th scope="col"><?= __('受診病院') ?></th>
                 <th scope="col"><?= __('受診科') ?></th>
                 <th scope="col"><?= __('受診形態') ?></th>
                 <th scope="col"><?= __('受診日') ?></th>
             </tr>
             <?php foreach ($user->patients as $patients): ?>
-            <tr>
-                <td><?= h($patients->department) ?></td>
-                <?php if($patients->desired == 0): ?>
-                    <td><?= h("対面") ?></td>
-                <?php elseif($patients->desired == 1): ?>
-                    <td><?= h("オンライン") ?></td>
-                <?php endif;?>
-                <td><?= h($patients->created) ?></td>
-            </tr>
+            <?php if($patients->status == 2 ): ?>
+                    <tr>
+                        <td><?= h($patients->doctor_id) ?></td>
+                        <td><?= h($patients->department) ?></td>
+                        <?php if($patients->desired == 0): ?>
+                            <td><?= h("対面") ?></td>
+                        <?php elseif($patients->desired == 1): ?>
+                            <td><?= h("オンライン") ?></td>
+                        <?php endif;?>
+                        <td><?= h($patients->created) ?></td>
+                    </tr>
+                <?php endif; ?>
             <?php endforeach; ?>
         </table>
         <?php endif; ?>
